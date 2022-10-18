@@ -1,0 +1,91 @@
+2013 DAT_B
+##년 DAT_I
+11 DAT_I
+##월 DAT_I
+18 DAT_I
+##일 DAT_I
+인천 LOC_B
+항 LOC_I
+4 LOC_I
+부두 LOC_I
+에서 LOC_I
+컨테이너 WRK_B
+작업 WRK_I
+중 WRK_I
+핸들러 AFW_B
+집게 AFW_I
+##가 AFW_I
+풀리 -
+##면 -
+##서 -
+피해자 CVL_B
+끼 -
+##임 -
+. -
+허리 ANM_B
+##에 ANM_I
+경상 -
+##을 -
+입 -
+##음 -
+
+Epoch: 01 | Epoch Time: 0m 59s
+	Train Loss: 1.968 | Train Acc: 50.09%
+	 Val. Loss: 1.203 |  Val. Acc: 69.46%
+	 Val. F1 Mac: 0.16 |  Val. F1 Mic: 0.69
+Epoch: 02 | Epoch Time: 0m 52s
+	Train Loss: 1.009 | Train Acc: 74.36%
+	 Val. Loss: 0.707 |  Val. Acc: 81.79%
+	 Val. F1 Mac: 0.47 |  Val. F1 Mic: 0.82
+Epoch: 03 | Epoch Time: 0m 53s
+	Train Loss: 0.672 | Train Acc: 82.84%
+	 Val. Loss: 0.541 |  Val. Acc: 85.06%
+	 Val. F1 Mac: 0.57 |  Val. F1 Mic: 0.85
+Epoch: 04 | Epoch Time: 0m 53s
+	Train Loss: 0.531 | Train Acc: 85.73%
+	 Val. Loss: 0.473 |  Val. Acc: 86.28%
+	 Val. F1 Mac: 0.61 |  Val. F1 Mic: 0.86
+Epoch: 05 | Epoch Time: 0m 53s
+	Train Loss: 0.452 | Train Acc: 87.24%
+	 Val. Loss: 0.465 |  Val. Acc: 85.62%
+	 Val. F1 Mac: 0.61 |  Val. F1 Mic: 0.86
+Epoch: 06 | Epoch Time: 0m 53s
+	Train Loss: 0.399 | Train Acc: 88.46%
+	 Val. Loss: 0.429 |  Val. Acc: 86.74%
+	 Val. F1 Mac: 0.66 |  Val. F1 Mic: 0.87
+Epoch: 07 | Epoch Time: 0m 53s
+	Train Loss: 0.376 | Train Acc: 89.18%
+	 Val. Loss: 0.462 |  Val. Acc: 87.02%
+	 Val. F1 Mac: 0.66 |  Val. F1 Mic: 0.87
+Epoch: 08 | Epoch Time: 0m 53s
+	Train Loss: 0.358 | Train Acc: 89.51%
+	 Val. Loss: 0.465 |  Val. Acc: 85.72%
+	 Val. F1 Mac: 0.65 |  Val. F1 Mic: 0.86
+Epoch: 09 | Epoch Time: 0m 53s
+	Train Loss: 0.323 | Train Acc: 90.21%
+	 Val. Loss: 0.419 |  Val. Acc: 87.27%
+	 Val. F1 Mac: 0.69 |  Val. F1 Mic: 0.87
+Epoch: 10 | Epoch Time: 0m 53s
+	Train Loss: 0.296 | Train Acc: 90.91%
+	 Val. Loss: 0.436 |  Val. Acc: 87.06%
+	 Val. F1 Mac: 0.68 |  Val. F1 Mic: 0.87
+Epoch: 11 | Epoch Time: 0m 53s
+	Train Loss: 0.275 | Train Acc: 91.48%
+	 Val. Loss: 0.438 |  Val. Acc: 87.03%
+	 Val. F1 Mac: 0.72 |  Val. F1 Mic: 0.87
+Epoch: 12 | Epoch Time: 0m 53s
+	Train Loss: 0.257 | Train Acc: 92.11%
+	 Val. Loss: 0.438 |  Val. Acc: 86.99%
+	 Val. F1 Mac: 0.71 |  Val. F1 Mic: 0.87
+Epoch: 13 | Epoch Time: 0m 53s
+	Train Loss: 0.238 | Train Acc: 92.68%
+	 Val. Loss: 0.416 |  Val. Acc: 87.90%
+	 Val. F1 Mac: 0.71 |  Val. F1 Mic: 0.88
+Epoch: 14 | Epoch Time: 0m 53s
+	Train Loss: 0.228 | Train Acc: 92.93%
+	 Val. Loss: 0.455 |  Val. Acc: 87.37%
+	 Val. F1 Mac: 0.72 |  Val. F1 Mic: 0.87
+Epoch: 15 | Epoch Time: 0m 53s
+	Train Loss: 0.214 | Train Acc: 93.35%
+	 Val. Loss: 0.450 |  Val. Acc: 87.19%
+	 Val. F1 Mac: 0.71 |  Val. F1 Mic: 0.87

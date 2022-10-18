@@ -1,4 +1,5 @@
 dataset_bk/
 dataset/
 .bk
+tut2-model.pt
 # git rm --cached -r dataset_bk
