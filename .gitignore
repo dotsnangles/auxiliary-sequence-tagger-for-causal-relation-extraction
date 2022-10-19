@@ -2,4 +2,5 @@ dataset_bk/
 dataset/
 .bk
 tut2-model.pt
+sample_result.csv
 # git rm --cached -r dataset_bk
