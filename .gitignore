@@ -1,6 +1,7 @@
 dataset_bk/
 dataset/
-.bk
+.bk/
+inference_data/
 tut2-model.pt
 sample_result.csv
 # git rm --cached -r dataset_bk
