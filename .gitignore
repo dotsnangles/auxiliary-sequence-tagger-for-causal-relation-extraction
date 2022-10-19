@@ -3,6 +3,7 @@ dataset_bk/
 dataset/
 .bk/
 inference_data/
+reference/
 tut2-model.pt
 sample_result.csv
 inference_result.txt

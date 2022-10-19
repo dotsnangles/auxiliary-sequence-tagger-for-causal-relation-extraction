@@ -22,7 +22,7 @@ class BERTPoSTagger(nn.Module):
     
 bert = ElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator")
 tokenizer = ElectraTokenizer.from_pretrained('./tokenizer/')
-print(len(tokenizer))
+# print(len(tokenizer))
 
 label2id = {'[PAD]': 0, '-': 1, 'AFW_B': 2, 'AFW_I': 3, 'ANM_B': 4, 'ANM_I': 5, 'CVL_B': 6, 'CVL_I': 7, 'DAT_B': 8, 'DAT_I': 9, 'LOC_B': 10, 'LOC_I': 11, 'MAT_B': 12, 'MAT_I': 13, 'NUM_B': 14, 'NUM_I': 15, 'TIM_B': 16, 'TIM_I': 17, 'TRM_B': 18, 'TRM_I': 19, 'WRK_B': 20, 'WRK_I': 21}
 id2label = {0: '[PAD]', 1: '-', 2: 'AFW_B', 3: 'AFW_I', 4: 'ANM_B', 5: 'ANM_I', 6: 'CVL_B', 7: 'CVL_I', 8: 'DAT_B', 9: 'DAT_I', 10: 'LOC_B', 11: 'LOC_I', 12: 'MAT_B', 13: 'MAT_I', 14: 'NUM_B', 15: 'NUM_I', 16: 'TIM_B', 17: 'TIM_I', 18: 'TRM_B', 19: 'TRM_I', 20: 'WRK_B', 21: 'WRK_I'}
