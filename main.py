@@ -72,7 +72,7 @@ def main():
     df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
     df = df[['Date', 'Time']]
     
-    df.to_csv(f'./{keyword}_ner.txt', index=False)
+    df.to_csv(f'./inference_results/{keyword}_ner.txt', index=False)
     print('완료되었습니다.')
     
 if __name__ == '__main__':

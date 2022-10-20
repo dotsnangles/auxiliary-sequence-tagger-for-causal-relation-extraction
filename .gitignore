@@ -4,6 +4,7 @@ dataset/
 .bk/
 inference_data/
 reference/
+inference_results
 tut2-model.pt
 sample_result.csv
 inference_result.txt
