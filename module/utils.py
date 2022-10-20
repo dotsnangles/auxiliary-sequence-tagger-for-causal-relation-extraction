@@ -27,9 +27,7 @@ def extract(tagtype, tags, subwords):
                     taggedList.append(tagged)
                     break
         if tagtype == 'DAT' or tagtype == 'TIM':
-            for i, el in enumerate(taggedList):
-                if len(el) < 2:
-                    taggedList.pop(i)
+            taggedList = [x for x in taggedList if not len(x) < 2]
             taggedList = [taggedList[0]]
         return ' [SEP] '.join(taggedList)
     else:
