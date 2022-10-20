@@ -14,16 +14,24 @@ def infer(input_ids_lst, input_masks_lst):
         return infer_results
     
 def extract(tagtype, tags, subwords):
-    # if tag does not exists then notify and pass
-    # if not '{tag}_I' then stop
     tag_start = f'{tagtype}_B'
-    if tag_start in tags:
-        b_idx = tags.index(tag_start)
-        for i, tag in enumerate(tags[b_idx:]):
-            if i > 0 and tag != f'{tagtype}_I':
-                tagged = subwords[b_idx:b_idx+i]
-                tagged = tokenizer.convert_tokens_to_string(tagged)
-                return tagged
+    tags_idx_dic = {i:x for i,x in zip(range(len(tags)), tags) if x == tag_start}
+    tag_start_ids = list(tags_idx_dic.keys())
+    if tag_start_ids:
+        taggedList = []
+        for b_idx in tag_start_ids:
+            for i, tag in enumerate(tags[b_idx:]):
+                if i > 0 and tag != f'{tagtype}_I':
+                    tagged = subwords[b_idx:b_idx+i]
+                    tagged = tokenizer.convert_tokens_to_string(tagged)
+                    taggedList.append(tagged)
+                    break
+        if tagtype == 'DAT' or tagtype == 'TIM':
+            for i, el in enumerate(taggedList):
+                if len(el) < 2:
+                    taggedList.pop(i)
+            taggedList = [taggedList[0]]
+        return ' [SEP] '.join(taggedList)
     else:
         msg = f'{tagtype} not found.'
-        return msg
+        return msg       

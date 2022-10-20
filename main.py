@@ -41,9 +41,7 @@ def main():
     subwordsList = []
     tagsList = []
     for input_ids, result in zip(input_ids_lst, infer_results):
-        # print(input_ids[1:])
         subwords = [x for x in input_ids if x != 0][1:-1]
-        # print(subwords)
         subwords = list(map(lambda x: tokenizer.convert_ids_to_tokens(x), subwords))
         subwordsList.append(subwords)
         lenSubwords = len(subwords)    
@@ -57,6 +55,8 @@ def main():
     tagtypes = dict(
         dat='DAT',
         tim='TIM',
+        loc='LOC',
+        wrk='WRK',    
     )
 
     nerResults = []
@@ -69,10 +69,10 @@ def main():
         nerResults.append(extracted)
         count += 1
 
-    df = pd.DataFrame(nerResults, columns=['Date', 'Time'])
-
-    df['Date'], df['Time'] = df['Date']+'\t', '\t'+df['Time']
-    df.to_csv(f'./{keyword}_ner.txt', index=False, sep='|')
+    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
+    df = df[['Date', 'Time']]
+    
+    df.to_csv(f'./{keyword}_ner.txt', index=False)
     print('완료되었습니다.')
     
 if __name__ == '__main__':
