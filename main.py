@@ -41,12 +41,13 @@ def main():
     subwordsList = []
     tagsList = []
     for input_ids, result in zip(input_ids_lst, infer_results):
-        decoded = tokenizer.decode(input_ids, skip_special_tokens=True)
-        subwords = tokenizer.encode(decoded)[1:-1]
+        # print(input_ids[1:])
+        subwords = [x for x in input_ids if x != 0][1:-1]
+        # print(subwords)
         subwords = list(map(lambda x: tokenizer.convert_ids_to_tokens(x), subwords))
         subwordsList.append(subwords)
-
         lenSubwords = len(subwords)    
+
         result = result[1:lenSubwords+1]
         tags = []
         for id in result:
