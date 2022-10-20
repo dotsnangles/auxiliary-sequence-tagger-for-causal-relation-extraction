@@ -22,16 +22,6 @@ def main():
     data = dfs[0]
     data.dropna(inplace=True)
 
-    """ Cleansing """
-
-    # def preprocess(df):
-    #     df['Event'] = df['Event'].str.replace("．", ".", regex=False)
-    #     df['Event'] = df['Event'].astype(str)
-    #     # df['Event'] = df['Event'].str.replace(r'[^ㄱ-ㅣ가-힣0-9a-zA-Z.]+', " ", regex=True)
-    #     return df
-
-    # data = preprocess(data)
-
     keyword = args.keyword
     print(f'\n{keyword}(으)로 검색한 항목들에 대해 개체명 인식을 시작합니다.')
 
@@ -50,7 +40,6 @@ def main():
 
     subwordsList = []
     tagsList = []
-    toLabel = lambda x: id2label[x]
     for input_ids, result in zip(input_ids_lst, infer_results):
         decoded = tokenizer.decode(input_ids, skip_special_tokens=True)
         subwords = tokenizer.encode(decoded)[1:-1]
@@ -61,14 +50,12 @@ def main():
         result = result[1:lenSubwords+1]
         tags = []
         for id in result:
-            tags.append(toLabel(id))
+            tags.append(id2label[id])
         tagsList.append(tags)
 
     tagtypes = dict(
         dat='DAT',
         tim='TIM',
-        loc='LOC',
-        wrk='WRK',    
     )
 
     nerResults = []
@@ -81,9 +68,9 @@ def main():
         nerResults.append(extracted)
         count += 1
 
-    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
+    df = pd.DataFrame(nerResults, columns=['Date', 'Time'])
 
-    df['Date'], df['Time'], df['Location'], df['Work'] = df['Date']+'\t', '\t'+df['Time']+'\t', '\t'+df['Location']+'\t', '\t'+df['Work']
+    df['Date'], df['Time'] = df['Date']+'\t', '\t'+df['Time']
     df.to_csv('./inference_result.txt', index=False, sep='|')
     print('완료되었습니다.')
     
