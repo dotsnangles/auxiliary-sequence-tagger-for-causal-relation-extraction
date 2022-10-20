@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from transformers import ElectraModel, ElectraTokenizer
+from transformers import ElectraConfig, ElectraModel, ElectraTokenizer
 
 class BERTPoSTagger(nn.Module):
     def __init__(self,
@@ -20,7 +20,9 @@ class BERTPoSTagger(nn.Module):
         predictions = self.fc(self.dropout(embedded))
         return predictions
     
-bert = ElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator")
+# bert = ElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator")
+config = ElectraConfig.from_pretrained('./bert_config')
+bert = ElectraModel(config=config)
 tokenizer = ElectraTokenizer.from_pretrained('./tokenizer/')
 # print(len(tokenizer))
 
