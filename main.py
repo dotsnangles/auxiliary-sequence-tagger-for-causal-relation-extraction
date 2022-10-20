@@ -70,9 +70,8 @@ def main():
         count += 1
 
     df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
-    df = df[['Date', 'Time']]
     
-    df.to_csv(f'./inference_results/{keyword}_ner.txt', index=False)
+    df.to_csv(f'./inference_results/{keyword}_ner.csv', index=False)
     print('완료되었습니다.')
     
 if __name__ == '__main__':
