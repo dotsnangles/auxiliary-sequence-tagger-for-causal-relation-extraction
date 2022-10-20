@@ -71,7 +71,7 @@ def main():
     df = pd.DataFrame(nerResults, columns=['Date', 'Time'])
 
     df['Date'], df['Time'] = df['Date']+'\t', '\t'+df['Time']
-    df.to_csv('./inference_result.txt', index=False, sep='|')
+    df.to_csv(f'./{keyword}_ner.txt', index=False, sep='|')
     print('완료되었습니다.')
     
 if __name__ == '__main__':
