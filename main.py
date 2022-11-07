@@ -5,6 +5,8 @@ import pandas as pd
 from module.model import tokenizer, id2label
 from module.utils import infer, extract
 
+### 사용 방법 python main.py --query 'keyword_1 keyword_2 keyword_3 ...'
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-q", "--query", dest="keyword", action="store")
@@ -19,14 +21,24 @@ def main():
 
     load_df = lambda x: pd.read_csv(x)
     dfs = [load_df(x) for x in file_path]
-    data = dfs[0]
+    data = pd.concat(dfs).reset_index(drop=True)
     data.dropna(inplace=True)
 
     keyword = args.keyword
     print(f'\n{keyword}(으)로 검색한 항목들에 대해 개체명 인식을 시작합니다.')
 
-    data['Indexes'] = data.Event.str.find(keyword)
-    infer_data = data[data.Indexes > -1]
+    keywords = keyword.split(' ')
+
+    word_isins = []
+    for word in keywords:
+        word_isin = data.Event.str.contains(word, case=False, regex=True).to_frame()
+        word_isins.append(word_isin)
+    search_result = pd.concat(word_isins, axis=1)
+    infer_data = data[search_result.all(axis=1)]
+    
+    if len(infer_data) == 0:
+        print('키워드에 해당하는 검색 결과가 존재하지 않습니다. 프로그램을 종료합니다.')
+        return
 
     infer_data_lst = infer_data.Event.apply(lambda x: tokenizer(x, max_length=256, padding='max_length', truncation=True))
 
@@ -72,7 +84,8 @@ def main():
     df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
     
     df.to_csv(f'./inference_results/{keyword}_ner.csv', index=False, encoding='utf-8-sig')
-    print('완료되었습니다.')
+    print('완료되었습니다. 아래의 경로로 검색 결과가 저장됩니다.')
+    print(f'./inference_results/{keyword}_ner.csv')
     
 if __name__ == '__main__':
     main()
