@@ -1,3 +1,3 @@
-# NER-with-ELECTRA
+# causal-relation-extractor
 
-파이토치 기반의 NER 프로젝트.
+automatic causal relation extraction utilizing transformer encoder model Electra as a token classifier.
