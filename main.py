@@ -69,25 +69,27 @@ def main():
         tim='TIM',
         loc='LOC',
         wrk='WRK',
-        afw='AFW',
-        anm='ANM',
-        cvl='CVL',
-        mat='MAT',
-        num='NUM',
-        trm='TRM',
+        # afw='AFW',
+        # anm='ANM',
+        # cvl='CVL',
+        # mat='MAT',
+        # num='NUM',
+        # trm='TRM',
     )
 
     nerResults = []
     count = 0
-    for subwords, tags in zip(subwordsList, tagsList):
+    for Event, subwords, tags in zip(infer_data.Event, subwordsList, tagsList):
         extracted = []
         for tagtype in tagtypes.values():
             tagged = extract(tagtype, tags, subwords)
             extracted.append(tagged)
+        extracted.append(Event)
         nerResults.append(extracted)
         count += 1
 
-    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work', 'Appartus_for_work', 'Anomaly', 'Civilian', 'Material', 'Number', 'Term'])
+    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work', 'Event'])
+    # df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work', 'Appartus_for_work', 'Anomaly', 'Civilian', 'Material', 'Number', 'Term'])
     
     df.to_csv(f'./inference_results/{keyword}_ner.csv', index=False, encoding='utf-8-sig')
     print('완료되었습니다. 아래의 경로로 검색 결과가 저장됩니다.')
