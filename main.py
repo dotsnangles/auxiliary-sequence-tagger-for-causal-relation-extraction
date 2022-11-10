@@ -5,7 +5,7 @@ import pandas as pd
 from module.model import tokenizer, id2label
 from module.utils import infer, extract
 
-### 사용 방법 python main.py --query 'keyword_1 keyword_2 keyword_3 ...'
+### 사용 방법 python main.py --query 'keyword_1,keyword_2,keyword_3,...'
 
 def main():
     parser = argparse.ArgumentParser()
@@ -27,7 +27,7 @@ def main():
     keyword = args.keyword
     print(f'\n{keyword}(으)로 검색한 항목들에 대해 개체명 인식을 시작합니다.')
 
-    keywords = keyword.split(' ')
+    keywords = keyword.split(',')
 
     word_isins = []
     for word in keywords:
@@ -68,7 +68,13 @@ def main():
         dat='DAT',
         tim='TIM',
         loc='LOC',
-        wrk='WRK',    
+        wrk='WRK',
+        afw='AFW',
+        anm='ANM',
+        cvl='CVL',
+        mat='MAT',
+        num='NUM',
+        trm='TRM',
     )
 
     nerResults = []
@@ -81,7 +87,7 @@ def main():
         nerResults.append(extracted)
         count += 1
 
-    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work'])
+    df = pd.DataFrame(nerResults, columns=['Date', 'Time', 'Location', 'Work', 'Appartus_for_work', 'Anomaly', 'Civilian', 'Material', 'Number', 'Term'])
     
     df.to_csv(f'./inference_results/{keyword}_ner.csv', index=False, encoding='utf-8-sig')
     print('완료되었습니다. 아래의 경로로 검색 결과가 저장됩니다.')

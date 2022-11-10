@@ -7,6 +7,7 @@ reference/
 inference_results
 tut2-model.pt
 sample_result.csv
+*.csv
 inference_result.txt
 선적작업_ner.txt
 # git rm --cached -r dataset_bk
