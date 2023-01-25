@@ -1,3 +1,3 @@
-# causal-relation-extractor
+# auxiliary-sequence-tagger-for-causal-relation-extraction
 
-automatic causal relation extraction utilizing transformer encoder model Electra as a token classifier.
+auxiliary sequence tagger for causal relation extraction utilizing transformer encoder model Electra as a token classifier.
